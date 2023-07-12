@@ -11,6 +11,16 @@ toc: true
 
 In this section we are going to learn some advanced concepts that are going to make you into a full-fledged R programmer. Before this you only used the built-in functions R came with, as well as the functions contained in packages. Now we will learn about building functions ourselves.
 
+CM NOTES: SIMPLIFY!!!!!
+
+Idea here was to show writing functions so that they could do things like: https://github.com/nuitrcs/r-tidyverse/blob/d5d070a5a9d624da94481c502fd914af709a23b2/dplyr-group.Rmd#L126C6-L126C6  (we cut this from the Thursday materials).  So, I'd drop flow control, and focus on writing simple!!! functions.  No functions that return functions (or take functions) unless you have an important specific use can in mind.  
+
+Goals are: 1) what if you want to do something that's multiple steps with summarize?  Show how to write a separate function, and then show how to write an anonymous one (you have some of this down later) -- both have applications for working with summarize, which is a simple application
+2) show how to work with tidyverse functions inside a function you create (the tidyeval stuff).  Don't show `enquo()` and `!!()` -- just do the {{}} stuff.  If I remember correctly (questionable), you can start with {{}} outside of functions, and then show it inside one.  One possible motivating example for this is making the same plot of different variables, which is something you can't do easily otherwise.
+
+For map functions, again, try to find a motivating example -- it's really abstract otherwise.  
+
+
 ## Control flow
 
 Control flow refers to the order in which individual statements are executed or evaluated.
