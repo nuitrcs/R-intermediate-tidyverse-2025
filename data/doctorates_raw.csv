@@ -1,0 +1,84 @@
+﻿program,school,level,phd,2010-11,2011-12,2012-13,2013-14,2014-15,2015-16,2016-17,2017-18,2018-19,2019-20,2020-21,2021-22
+African-American Studies,WEINBERG ARTS AND SCIENCES,program,1,1,,,6,,5,,4,5,5,2,2
+Anthropology,WEINBERG ARTS AND SCIENCES,program,1,4,3,7,8,5,7,6,4,9,6,7,3
+Applied Physics,WEINBERG ARTS AND SCIENCES,program,1,,,,,,,,12,11,2,6,8
+Art History,WEINBERG ARTS AND SCIENCES,program,1,2,2,6,2,2,2,8,2,5,3,1,2
+Biological Sciences,WEINBERG ARTS AND SCIENCES,program,1,24,11,14,13,13,13,18,13,19,23,14,17
+Chemistry,WEINBERG ARTS AND SCIENCES,program,1,44,37,46,44,39,47,34,34,46,38,43,56
+Comparative Literature,WEINBERG ARTS AND SCIENCES,program,1,2,2,2,3,5,3,2,6,6,3,2,
+Earth and Planetary Sciences,WEINBERG ARTS AND SCIENCES,program,1,2,1,2,4,4,4,3,3,5,3,5,6
+Economics,WEINBERG ARTS AND SCIENCES,program,1,15,25,18,18,16,21,11,20,25,20,19,16
+English,WEINBERG ARTS AND SCIENCES,program,1,4,2,9,6,2,5,5,11,6,11,6,8
+French and Italian,WEINBERG ARTS AND SCIENCES,program,1,1,1,1,2,2,1,3,2,2,1,,
+German,WEINBERG ARTS AND SCIENCES,program,1,,,,1,1,1,1,,1,1,2,
+History,WEINBERG ARTS AND SCIENCES,program,1,12,10,6,8,10,15,9,13,16,5,10,9
+Intercultural and International Studies,WEINBERG ARTS AND SCIENCES,program,1,,,,,,,,,,,,
+Linguistics,WEINBERG ARTS AND SCIENCES,program,1,5,2,2,,4,5,2,3,1,3,3,1
+Mathematics,WEINBERG ARTS AND SCIENCES,program,1,2,12,8,7,4,11,12,9,8,3,12,10
+Neuroscience,WEINBERG ARTS AND SCIENCES,program,1,27,20,27,21,18,22,17,15,18,23,17,17
+Philosophy,WEINBERG ARTS AND SCIENCES,program,1,5,2,6,1,6,2,6,2,4,3,4,6
+Physics and Astronomy,WEINBERG ARTS AND SCIENCES,program,1,7,13,10,16,12,10,15,11,14,12,11,11
+Plant Biology and Conservation,WEINBERG ARTS AND SCIENCES,program,1,,,,,1,1,1,5,,1,2,
+Political Science,WEINBERG ARTS AND SCIENCES,program,1,8,5,19,14,15,11,11,11,10,15,11,10
+Psychology,WEINBERG ARTS AND SCIENCES,program,1,9,11,9,18,12,13,9,15,9,12,8,12
+Religion,WEINBERG ARTS AND SCIENCES,program,1,1,2,2,5,3,7,3,,,,,
+Slavic Languages,WEINBERG ARTS AND SCIENCES,program,1,3,1,2,1,1,1,3,1,1,,2,2
+Sociology,WEINBERG ARTS AND SCIENCES,program,1,14,5,11,7,9,7,13,18,11,6,9,12
+Spanish and Portuguese,WEINBERG ARTS AND SCIENCES,program,1,,,,,,,,4,,1,2,4
+Statistics,WEINBERG ARTS AND SCIENCES,program,1,3,1,4,6,4,3,3,3,7,4,5,6
+WEINBERG ARTS AND SCIENCES,WEINBERG ARTS AND SCIENCES,school,NA,195,166,211,210,186,219,196,217,239,207,204,220
+Audiology,COMMUNICATION,program,0,14,13,12,8,11,16,10,15,10,12,23,16
+Audiology and Hearing Science,COMMUNICATION,program,1,,,,,,,,,,,,
+Comm. Science and Disorders,COMMUNICATION,program,1,2,7,10,4,5,6,5,3,4,5,5,8
+Communication Studies,COMMUNICATION,program,1,4,3,9,3,6,4,4,3,1,3,3,3
+Learning Disabilities,COMMUNICATION,program,1,,,1,1,,,,,,,,
+"Media, Technology and Society",COMMUNICATION,program,1,3,2,5,5,9,4,5,3,3,6,11,6
+Performance Studies,COMMUNICATION,program,1,2,4,6,3,3,5,4,4,3,3,2,2
+Radio/TV/Film,COMMUNICATION,program,1,,,1,,,,,,,,,
+Speech and Language Pathology,COMMUNICATION,program,1,,,,,,,,,22,25,20,28
+Screen Cultures,COMMUNICATION,program,1,2,3,4,6,4,8,5,,3,1,5,4
+Theatre and Drama,COMMUNICATION,program,1,3,3,5,2,,4,5,6,3,1,2,5
+COMMUNICATION,COMMUNICATION,school,NA,30,35,53,32,38,47,38,34,49,56,71,72
+Counseling Psych.,EDUCATION AND SOCIAL POLICY,program,1,,,,,,,,,,,,
+Human Development and Social Policy,EDUCATION AND SOCIAL POLICY,program,1,7,2,8,3,3,4,5,2,3,5,2,6
+Learning Sciences,EDUCATION AND SOCIAL POLICY,program,1,1,3,8,3,7,3,5,6,4,3,2,12
+EDUCATION AND SOCIAL POLICY,EDUCATION AND SOCIAL POLICY,school,NA,8,5,16,6,10,7,10,8,7,8,4,18
+Applied Mathematics,MCCORMICK ENGINEERING,program,1,5,5,6,7,4,3,3,8,6,5,7,6
+Biomedical Engineering,MCCORMICK ENGINEERING,program,1,6,15,16,18,18,13,17,13,9,16,16,20
+Chemical Engineering,MCCORMICK ENGINEERING,program,1,19,6,9,16,17,13,17,16,26,17,6,17
+Civil Engineering,MCCORMICK ENGINEERING,program,1,6,8,10,7,14,14,10,7,18,7,10,11
+Computer Engineering,MCCORMICK ENGINEERING,program,1,,1,1,2,4,4,3,1,3,11,6,5
+Computer Science,MCCORMICK ENGINEERING,program,1,4,5,7,9,4,8,15,6,12,11,14,9
+Electrical and Computer Engineering,MCCORMICK ENGINEERING,program,1,21,12,8,7,8,11,7,,,1,,
+Electrical Engineering,MCCORMICK ENGINEERING,program,1,,3,11,6,3,2,12,5,14,10,6,7
+Industrial Engg. and Management Science,MCCORMICK ENGINEERING,program,1,5,6,14,9,10,6,8,11,7,10,9,9
+Material Science and Engineering,MCCORMICK ENGINEERING,program,1,20,28,29,22,33,27,37,34,28,33,34,26
+Mechanical Engineering,MCCORMICK ENGINEERING,program,1,10,11,14,15,20,16,14,15,13,21,21,18
+Theoretical and Applied Mechanics,MCCORMICK ENGINEERING,program,1,3,,4,2,2,4,2,4,6,1,2,4
+MCCORMICK ENGINEERING,MCCORMICK ENGINEERING,school,NA,99,100,129,120,137,121,145,120,142,143,131,132
+Juridical Science,LAW,program,0,,,2,,1,,2,,,1,,1
+LAW,LAW,school,NA,0,0,2,0,1,0,2,0,0,1,0,1
+Accounting and Information Systems,KELLOGG MANAGEMENT,program,1,1,3,3,2,2,2,1,2,4,,,2
+Finance,KELLOGG MANAGEMENT,program,1,2,3,6,8,2,8,1,1,7,4,4,5
+Management and Organization,KELLOGG MANAGEMENT,program,1,7,3,1,5,7,5,1,3,1,3,4,4
+Managerial Economics and Strategy,KELLOGG MANAGEMENT,program,1,3,6,2,,8,4,6,5,2,1,2,8
+Marketing,KELLOGG MANAGEMENT,program,1,4,7,2,5,5,1,3,4,3,3,3,2
+Operations Management,KELLOGG MANAGEMENT,program,1,1,1,2,,3,2,3,2,6,1,3,4
+KELLOGG MANAGEMENT,KELLOGG MANAGEMENT,school,NA,18,23,16,20,27,22,15,17,23,12,16,25
+Clinical Psychology,FEINBERG MEDICINE/LIFE SCIENCES,program,1,1,4,6,3,2,9,5,9,7,8,9,7
+Health Sciences Integrated Program,FEINBERG MEDICINE/LIFE SCIENCES,program,1,,,,,,,,1,2,6,1,1
+Integrative Life Sciences,FEINBERG MEDICINE/LIFE SCIENCES,program,1,28,38,43,40,28,37,28,35,28,22,23,41
+Oral Biology,FEINBERG MEDICINE/LIFE SCIENCES,program,1,,,,,,,,,,,,
+FEINBERG MEDICINE/LIFE SCIENCES,FEINBERG MEDICINE/LIFE SCIENCES,school,NA,29,42,49,43,30,46,33,45,37,36,33,49
+Music,BIENEN MUSIC,program,0,13,14,12,16,14,16,10,10,12,8,23,29
+Music,BIENEN MUSIC,program,1,3,5,4,5,6,6,5,4,5,1,4,6
+Music Education,BIENEN MUSIC,program,1,,,,,,,,,,,,
+Music Theory,BIENEN MUSIC,program,1,,,,,,,,,,,,
+Musicology,BIENEN MUSIC,program,1,1,,,,,,,,,,,
+BIENEN MUSIC,BIENEN MUSIC,school,NA,16,20,16,21,20,22,15,14,17,9,27,35
+Physical Therapy,INTER-SCHOOL/OTHER,program,0,70,54,72,78,74,89,93,91,93,88,90,93
+Religious Studies (Garrett Seminary/NU Joint Program),INTER-SCHOOL/OTHER,program,1,,,,,,,,1,7,2,1,2
+Management and Organizations and Sociology,INTER-SCHOOL/OTHER,program,1,,,,,,,,,2,2,1,
+Technology and Social Behavior,INTER-SCHOOL/OTHER,program,1,1,,1,,2,1,1,2,3,3,7,6
+INTER-SCHOOL/OTHER,INTER-SCHOOL/OTHER,school,NA,71,54,73,80,74,90,94,94,105,95,99,101
+TOTAL DOCTORATES,NA,total,NA,466,445,565,532,523,574,548,549,619,567,585,653
