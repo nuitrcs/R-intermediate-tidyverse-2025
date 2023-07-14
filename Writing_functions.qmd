@@ -125,14 +125,6 @@ Write a function to calculate present age given birth year. Add the current year
 
 ```
 
-### EXERCISE
-
-Write a function to return the minimum and maximum values inside a named list
-
-```{r}
-
-```
-
 ## Returning values
 
 Usually, the last evaluated value is returned as the function output. Therefore the function below will only return one value as the output.
@@ -477,4 +469,170 @@ scatterplot_with_lm(mtcars, wt, mpg, gear, "mtcars Data")
 scatterplot_with_lm(mtcars, wt, mpg, factor(gear), "mtcars Data")
 ```
 
+### EXERCISE
+
+Load the babynames package as below:
+
+```{r}
+install.packages("babynames")
+library(babynames)
+```
+
+Rewrite the code below as a function that can take any data set similar to `babynames` and plot the popularity as either the `prop` or `n` columns over year for the variable `chosen_name`. Call the function `name_popularity_plotter`.
+
+```         
+chosen_name = "Tyler"
+babynames %>% 
+  filter(name == chosen_name) %>% 
+  ggplot(aes(x=year, y=prop)) + 
+  geom_col(color="orange", fill="orange", alpha=0.5) + theme_classic()
+```
+
+```{r}
+
+```
+
 ## Functional Programming with `{purrr}`
+
+In functional programming, your code is organised into functions that perform the operations you need. Your scripts will only be a sequence of calls to these functions, making them easier to understand. Some examples of functional programming are the `purrr::map` and `purrr::reduce` family of functions.
+
+### The `map*()` family of functions
+
+Instead of using loops, pure functional programming languages use functions that achieve the same result. The first part of these functions' names all start with `map_` and the second part tells you what this function is going to ***return***, such as `map_dbl()` for doubles, or `map_df()` for dataframes.
+
+For example, here $X$ is a vector composed of the several scalar elements. The function we want to map to each element of $X$ is $f( x)=x+1$:
+
+![](https://upload.wikimedia.org/wikipedia/commons/0/06/Mapping-steps-loillibe-new.gif){width="419"}
+
+```{r}
+numbers <- c(0, 5, 8, 3, 2, 1)
+plus_one <- function(x) {x+1} # function to apply to each element
+```
+
+You could use a loop to execute this task as follows:
+
+```{r}
+my_results <- c()
+for (i in seq_along(numbers)) {
+ my_results[i] = plus_one(numbers[i])
+}
+my_results
+```
+
+Using the `map*()` functions, we can simplify this code a lot:
+
+```{r}
+map(numbers, plus_one)
+```
+
+You could also use the base R `apply` functions to same effect:
+
+```{r}
+lapply(numbers, plus_one)
+```
+
+So what is the added value of using `{purrr}`, you might ask. Well, imagine that instead of a list, I need to an atomic vector of `numeric` values. This is fairly easy with `{purrr}`:
+
+```{r}
+map_dbl(numbers, plus_one)
+```
+
+In base R, outputting something other than lists involves more effort. Whereas, using the map family of functions you get try `⁠_lgl()⁠`, `⁠_int()⁠`, `⁠_dbl()⁠`, `⁠_chr()⁠` to return a logical, integer, double, or character vector respectively.
+
+### Mapping with two inputs
+
+Sometimes you might want to perform operations by iterating over two lists. Then you would use the `map2` family of functions.
+
+```{r}
+x <- c(1,1,1)
+y <- c(10, 20, 30)
+
+addition <- function(x,y) (x+y)
+
+map2_dbl(x, y, addition)
+```
+
+To learn about mapping with multiple inputs see [`pmap()`](https://dcl-prog.stanford.edu/purrr-parallel.html#pmap).
+
+### Mapping with anonymous functions
+
+Let's rewrite the addition function above as an anonymous function inside `map`
+
+```{r}
+map2_dbl(x, y, function(x,y) x+y) 
+```
+
+### Mapping with formulas
+
+Tidyverse functions also support formulas, as they get converted into anonymous functions. Using a formula instead of an anonymous function is less verbose; you use `~` instead of `function(x)` and a single dot `.` instead of `x` (or `.x` and `.y` if you have multiple inputs).
+
+```{r}
+map_dbl(x, ~{sqrt(.)})
+```
+
+Let's re-write the addition function from before with a formula to be even more concise:
+
+```{r}
+map2_dbl(x, y, ~{.x + .y})
+```
+
+### Practical examples for `map*()`
+
+Let's use a more practical example. Suppose you want to split your data set into pieces and then fit a linear model to each piece, and then extract the regression coefficient for each piece. You could use map functions to carry this out easily:
+
+```{r}
+penguins %>% 
+  nest(.by = species) %>% 
+  mutate(models = map(data, function(df) lm(body_mass_g ~ bill_depth_mm, data=df))) %>% 
+  mutate(r_squared = map_dbl(models, function(m) summary.lm(m)$r.squared)) %>% 
+  select(species, r_squared) 
+```
+
+Let's look at another example from the data frame `babynames`
+
+```{r}
+# plot the proportion of babies named "John" over time
+babynames %>% 
+  filter(name == "John") %>% 
+  ggplot(aes(x=year, y=prop)) + 
+  geom_col(color="orange", fill="orange", alpha=0.5) + theme_classic()
+```
+
+Let's use `map` to find the linear rate of change of the proportion of selected baby names over time.
+
+```{r}
+selected_names <- c("John", "Tyler", "Elizabeth", "Jessica")
+
+babynames %>% 
+  filter(name %in% selected_names) %>% 
+  nest(.by = name) %>% 
+  mutate(models = map(data, function(df) lm(prop ~ year, data=df))) %>% 
+  mutate(slope = map_dbl(models, function(m) summary(m)$coefficients[2])) %>% 
+  select(name, slope) 
+```
+
+Now let's find the linear rate of change for all names with at-least 500 occurrences in the year 2000 and arrange them by highest to lowest rate:
+
+```{r}
+subset <- babynames  %>% filter(n >= 500, year == 2000)
+dim(subset)
+
+babynames %>% 
+  filter(name %in% subset$name ) %>% 
+  nest(.by = name) %>% 
+  mutate(models = map(data, function(df) lm(prop ~ year, data=df))) %>% 
+  mutate(slope = map_dbl(models, function(m) summary(m)$coefficients[2])) %>% 
+  mutate(rsquared = map_dbl(models, function(m) summary(m)$r.squared)) %>% 
+  filter(rsquared >= 0.1)  %>% 
+  select(name, slope, rsquared) %>% 
+  arrange(slope) %>% 
+  View()
+```
+
+### EXERCISE
+
+Write
+
+```{r}
+
+```
