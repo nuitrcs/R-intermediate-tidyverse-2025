@@ -177,7 +177,7 @@ average_and_sd_calculator(grades)
 We can bundle together several objects and return them as a single list of vector:
 
 ```{r}
-# return as a vector
+# ------return as a vector------
 average_and_sd_calculator <- function(x) {
   mean_x = mean(x)
   sd_x = sd(x)
@@ -189,7 +189,7 @@ average_and_sd_calculator <- function(x) {
 average_and_sd_calculator(grades)
 
 
-# return as a list
+# ------return as a list------
 average_and_sd_calculator <- function(x) {
   mean_x = mean(x)
   sd_x = sd(x)
@@ -201,7 +201,7 @@ average_and_sd_calculator <- function(x) {
 average_and_sd_calculator(grades)
 
 
-# return as a named list
+# ------return as a named list------
 average_and_sd_calculator <- function(x) {
   mean_x = mean(x)
   sd_x = sd(x)
@@ -224,7 +224,7 @@ library(palmerpenguins)
 
 ### EXERCISE
 
-Write a function which takes in two vectors `x` and `y` and returns the $R^2$ value for a linear model y \~ x. Use it to find the $R^2$ value for a linear fit between `body_mass_g` and `bill_length_mm` for the `penguins` data. Hint: use `summary` on the output of `lm`
+Write a function which takes in two vectors `x` and `y` and returns the $R^2$ value for a linear model y \~ x. Use it to find the $R^2$ value for a linear fit between `body_mass_g` and `bill_length_mm` for the `penguins` data. Hint: use `summary` on the output of `lm` and extract the `r.squared`
 
 ```{r}
 
@@ -335,15 +335,6 @@ To be able to pass column names of your data as arguments, we need to use a fram
 Let's rewrite the function from before with curly curly syntax:
 
 ```{r}
-# outside curly
-
-col_name = "body_mass_g"
-
-penguins %>% 
-    summarize(mean = mean({{col_name}}, na.rm=TRUE))
-```
-
-```{r}
 # function using tidyeval
 simple_function <- function(dataset, col_name) {
   
@@ -424,7 +415,7 @@ Hint: First write out the tidyverse commands as you would normally, then convert
 
 ### EXERCISE
 
-Write a function `sorted_mean_col` to calculate the average of any numeric column grouped by the column `homeworld`, and arrange the results from lowest to highest. Name the summary statistic column the same as the input column.
+Write a function `sorted_mean_col` to calculate the average of *any* numeric column grouped by the column `homeworld`, and arrange the results from lowest to highest. Name the summary statistic column the same as the input column.
 
 ```{r}
 
@@ -451,7 +442,8 @@ scatterplot_with_lm <- function(data, x_col, y_col, grouping_var, title) {
   data %>% 
     ggplot(aes(x = {{x_col}}, y = {{y_col}}, group = {{grouping_var}})) +
     geom_point(aes( color = {{grouping_var}}), size=2, alpha=0.8) +
-    geom_smooth(aes(color = {{grouping_var}}, fill = {{grouping_var}}), method="lm", alpha =0.1) +
+    geom_smooth(aes(color = {{grouping_var}}, fill = {{grouping_var}}), 
+                method="lm", alpha =0.1) +
     theme_classic() + labs(title = title)
 }
 ```
@@ -471,16 +463,15 @@ scatterplot_with_lm(mtcars, wt, mpg, factor(gear), "mtcars Data")
 
 ### EXERCISE
 
-Load the babynames package as below:
+Load the `{babynames}` package as below:
 
 ```{r}
 install.packages("babynames")
 library(babynames)
 ```
 
-Rewrite the code below as a function that can take any data set similar to `babynames` and plot the popularity as either the `prop` or `n` columns over year for the variable `chosen_name`. Call the function `name_popularity_plotter`.
-
-```         
+```{r}
+# plot the popularity of a name across time
 chosen_name = "Tyler"
 babynames %>% 
   filter(name == chosen_name) %>% 
@@ -488,8 +479,12 @@ babynames %>%
   geom_col(color="orange", fill="orange", alpha=0.5) + theme_classic()
 ```
 
-```{r}
+Rewrite the plotting code above as a function that can take any data set similar to `babynames` and plot the popularity measure (as either the `prop` or `n` for example) over time for the variable `chosen_name`. Call the function `name_popularity_plotter`.
 
+```{r}
+name_popularity_plotter <- function(){
+  
+}
 ```
 
 ## Functional Programming with `{purrr}`
@@ -554,6 +549,15 @@ map2_dbl(x, y, addition)
 
 To learn about mapping with multiple inputs see [`pmap()`](https://dcl-prog.stanford.edu/purrr-parallel.html#pmap).
 
+### EXERCISE
+
+Write a map function that takes in a names vector and adds the title "Dr." in front of each name. Make sure it returns a character vector of the modified names.
+
+```{r}
+names <- c("Doom", "Strange", "Fate", "Manhattan", "Octopus")
+
+```
+
 ### Mapping with anonymous functions
 
 Let's rewrite the addition function above as an anonymous function inside `map`
@@ -576,9 +580,18 @@ Let's re-write the addition function from before with a formula to be even more 
 map2_dbl(x, y, ~{.x + .y})
 ```
 
+### EXERCISE
+
+Rewrite the code from the previous exercise to now make an anonymous function call with map.
+
+```{r}
+names <- c("Doom", "Strange", "Fate", "Manhattan", "Octopus")
+
+```
+
 ### Practical examples for `map*()`
 
-Let's use a more practical example. Suppose you want to split your data set into pieces and then fit a linear model to each piece, and then extract the regression coefficient for each piece. You could use map functions to carry this out easily:
+Let's look at a more practical example. Suppose you want to split your data set into pieces and then fit a linear model to each piece, and then extract the regression coefficient for each piece. You could use map functions to carry this out easily:
 
 ```{r}
 penguins %>% 
@@ -591,20 +604,20 @@ penguins %>%
 Let's look at another example from the data frame `babynames`
 
 ```{r}
-# plot the proportion of babies named "John" over time
+# plot the proportion of babies named "Tyler" from 2000 - 2020
 babynames %>% 
-  filter(name == "John") %>% 
+  filter(name == "Tyler", year %in% 2000:2020) %>% 
   ggplot(aes(x=year, y=prop)) + 
   geom_col(color="orange", fill="orange", alpha=0.5) + theme_classic()
 ```
 
-Let's use `map` to find the linear rate of change of the proportion of selected baby names over time.
+Let's use `map` to find the rate of change of the proportion of selected baby names from 2000-2020.
 
 ```{r}
-selected_names <- c("John", "Tyler", "Elizabeth", "Jessica")
+selected_names <- c("Tyler", "Mary", "William", "Jessica")
 
 babynames %>% 
-  filter(name %in% selected_names) %>% 
+  filter(name %in% selected_names, year %in% 2000:2020) %>% 
   nest(.by = name) %>% 
   mutate(models = map(data, function(df) lm(prop ~ year, data=df))) %>% 
   mutate(slope = map_dbl(models, function(m) summary(m)$coefficients[2])) %>% 
