@@ -624,28 +624,34 @@ babynames %>%
   select(name, slope) 
 ```
 
-Now let's find the linear rate of change for all names with at-least 500 occurrences in the year 2000 and arrange them by highest to lowest rate:
+[Cheat sheet](https://github.com/rstudio/cheatsheets/blob/main/purrr.pdf) of `{purrr}` functions.
+
+### EXERCISE
+
+Write a map function that takes in a dataframe and returns a summary dataframe. Use it on the penguins data set after omitting `NA`s
 
 ```{r}
-subset <- babynames  %>% filter(n >= 500, year == 2000)
-dim(subset)
 
-babynames %>% 
-  filter(name %in% subset$name ) %>% 
-  nest(.by = name) %>% 
-  mutate(models = map(data, function(df) lm(prop ~ year, data=df))) %>% 
-  mutate(slope = map_dbl(models, function(m) summary(m)$coefficients[2])) %>% 
-  mutate(rsquared = map_dbl(models, function(m) summary(m)$r.squared)) %>% 
-  filter(rsquared >= 0.1)  %>% 
-  select(name, slope, rsquared) %>% 
-  arrange(slope) %>% 
-  View()
 ```
 
 ### EXERCISE
 
-Write
+Find the female baby name that has increased in popularity from 2000 - 2020 Use only names that appear at least 5,000 times in the year 2000.
 
 ```{r}
 
 ```
+
+### EXERCISE
+
+Write code to find the change in popularity since 2000 for *all* baby names with at-least 500 occurrences in the year 2000. Select only those models whose $R^2$ was at least 0.1.
+
+```{r}
+
+```
+
+Which of these baby names had the greatest rise in popularity from 2000-2020?
+
+Which of these baby names had the greatest decline in popularity from 2000-2020?
+
+Which of these baby names fits a linear model extremely well?
