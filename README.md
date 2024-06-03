@@ -1,4 +1,4 @@
-# R Intermediate Tidyverse 2023
+# R Intermediate Tidyverse
 
 **These materials: https://github.com/nuitrcs/R-intermediate-tidyverse-2023**
 
