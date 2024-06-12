@@ -6,9 +6,9 @@ This workshop is being offered in-person in June 2024 by [Northwestern IT Resear
 
 We will cover the following topics:
 
-1. Joining together datasets (dplyr-join.Rmd)
-2. Reshaping/pivoting datasets (tidyr.Rmd)
-3. Writing functions (Writing_functions.qmd)
+1. Joining together datasets (1_dplyr_join.qmd)
+2. Reshaping/pivoting datasets (2_tidyr_pivot.qmd)
+3. Writing functions (3_writing_functions.qmd)
 
 This workshop builds on, and assumes knowledge of, [Intro to Tidyverse](https://github.com/nuitrcs/R-intro-tidyverse-2023).  Specifically, it assumes participants are familiar with the core dplyr functions of select, filter, mutate, summarize, group_by, and the %>% operator.  
 
