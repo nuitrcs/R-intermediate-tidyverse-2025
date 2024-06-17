@@ -1,7 +1,5 @@
 # R Intermediate Tidyverse
 
-**These materials: https://github.com/nuitrcs/R-intermediate-tidyverse-2024**
-
 This workshop is being offered in-person in June 2024 by [Northwestern IT Research Computing and Data Services](https://www.it.northwestern.edu/departments/it-services-support/research/).
 
 We will cover the following topics:
