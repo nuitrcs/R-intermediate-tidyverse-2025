@@ -17,7 +17,7 @@ knitr::opts_chunk$set(eval=TRUE)
 
 # Setup
 
-It's important you have `{tidyr}` version 1.1.0 (at least) installed. Check this with:
+It's important that you have `{tidyr}` version 1.1.0 (at least) installed. Check this with:
 
 ```{r}
 packageVersion("tidyr")
@@ -181,10 +181,15 @@ pivot_longer(who2, -country:-year,
              # we'll keep 3 columns: make up a name for each
              names_to=c("diagnosis", "gender", "age"),  
              # this is a regular expression that captures the pattern
+             # new_? matches new with an optional _
+             # . matches any single character except a newline and + means one or more of the preceding
+             # _ matches _
+             # [mf] matches either m or f
+             # \\d+ matches one or more digits
              # each () set is a value to keep and turn into a column;
              # we are dropping "new"
              names_pattern = "new_?(.+)_([mf])(\\d+)",
-             values_to="count")  
+             values_to="count")
 ```
 
 If the variable names had a simpler pattern, for example: year_measure, then we could use the "names_sep" argument instead of the more complicated "names_pattern" to split up the column.
@@ -259,7 +264,7 @@ Pivot the `long_data` data frame wider so that each row is a country-diagnosis-g
 
 ```
 
-# Separate
+# Bonus 1: Separate
 
 Much like we had `pivot_longer()` split up the components of the variable names for us into measure, age, and gender, we can use the `separate()` function to do that to columns outside of pivoting.
 
@@ -331,7 +336,7 @@ addresses <- tribble(~name, ~location,
                      "Alex", "San Jose, CA")
 ```
 
-# separate_rows()
+# Bonus 2: separate_rows()
 
 In cases where you want to separate out a column, but you don't know how many values might be in it, another option is to make one row, instead of one column, per value. It's combining a separate with a pivot longer.
 
@@ -367,7 +372,7 @@ separate_rows(survey,
               values_fill=0) ## fills in missing vals with 0 instead of NA
 ```
 
-## Learning More
+# Resources to continue learning
 
 The `{tidyr}` documentation has a tutorial on pivoting: <https://tidyr.tidyverse.org/articles/pivot.html>
 
