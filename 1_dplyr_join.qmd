@@ -314,30 +314,30 @@ Find the rows in `deaths` that don't have a match in `demo` Hint: join with `dea
 Missing values: by default, `{dplyr}` matches missing (`NA`) as if it is a value. So if we have two data frames, and there are missing values in our key id variables, then they will match, even if there are multiple `NA`s.
 
 ```{r}
-a <- tibble(id=c(1, 2, NA), val=c(10, 20, 30))
-b <- tibble(id=c(2, 3, NA, NA), val2 = c("a", "b", "c", "d"))
-a
-b
+x1 <- tibble(id=c(1, 2, NA), val=c(10, 20, 30))
+x2 <- tibble(id=c(2, 3, NA, NA), val2 = c("a", "b", "c", "d"))
+x1
+x2
 ```
 
 ```{r}
-left_join(a, b, by="id")
+left_join(x1, x2, by="id")
 ```
 
 If we want this to not happen, we can set the `na_matches` argument to "never"
 
 ```{r}
-left_join(a, b, by="id", 
+left_join(x1, x2, by="id", 
           na_matches="never")
 ```
 
 Sometimes, R will warn you that there there might be a problem.
 
 ```{r}
-c <- tibble(id=c(2, 3, NA, NA), val3 = c("w", "x", "y", "z"))
-c
+x3 <- tibble(id=c(2, 3, NA, NA), val3 = c("w", "x", "y", "z"))
+x3
 
-left_join(b, c, by="id")
+left_join(x2, x3, by="id")
 ```
 
 This isn't actually related to missing values, but it's one of the times when this is most likely to happen by mistake. What it means is that there's more than one row in the first data set that matches to the same row in the second data set AND there are rows in the first data set that each match to multiple rows in the second data set.
