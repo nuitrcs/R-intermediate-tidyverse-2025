@@ -103,7 +103,7 @@ The terminology for joining comes from SQL, which is used to interact with datab
 
 Joins work when you have two data frames (called tables in databases, but same idea), and you want to merge them together. Each data set needs to have some type of identifier, a key, that tells you how a row in dataset 1 should be matched into dataset 2.
 
-For example, here, we have three county datasets, all of which have different data (different variables). In our case, each dataset includes an ID variable for each county. These IDs are the same across datasets because all 3 use the FIPS code from the US Census. So even though our datasets have different numbers of rows:
+For example, here, we have three county datasets, all of which have different data (different variables). In our case, each dataset includes an ID variable for each county. These IDs are the same across datasets because all 3 use the FIPS code from the US Census. So even though our datasets have different numbers of rows, we have a key that will link rows in the different datasets together:
 
 ```{r, eval=TRUE}
 names(cases)
@@ -114,8 +114,6 @@ nrow(cases)
 nrow(deaths)
 nrow(demo)
 ```
-
-We have a key that will link rows in the different datasets together.
 
 For example, look at a county that is in all three data sets:
 
@@ -214,18 +212,18 @@ left_join(cases, deaths)
 
 And tell me what it joined by in the output.
 
-But it's best to be explicit about how you want to join the tables. Just because two columns have the same name, doesn't mean all of the data is the same! In the case of the `cases` and `deaths` data frames, they come from the same source. So all of these columns *SHOULD* match, but they don't!
+**You don't want to do this!** It's best to be explicit about how you want to join the tables. Just because two columns have the same name, doesn't mean all of the data is the same! In the case of the `cases` and `deaths` data frames, they come from the same source. So all of these columns *SHOULD* match, but they don't!
 
 ```{r}
 left_join(cases, deaths,
           by="countyFIPS") %>%
-  filter(county.x != county.y)  
-# use select(county.x, county.y) to see differences
+  filter(county.x != county.y) %>% 
+  select(county.x, county.y)
 ```
 
 If we matched by countyFIPS and county, we'd miss these matches.
 
-Something to always watch out for! It's usually best to join using the minimal set of columns needed to identify the correct matches.
+**Something to always watch out for!** It's usually best to join using the minimal set of columns needed to identify the correct matches.
 
 With the `cases` and `deaths` data frames, they came from the same data source, so the key column has the same name in both data sets. In the `demo` data frame, the name of the column with the county FIPS code is different though:
 
@@ -254,7 +252,6 @@ This gives us a cleaner result without duplicate rows. But make sure that the va
 Join (`left_join` is fine) the `cases` data frame to the `state_stats` data frame using the state column in each ("state" in `cases` and "State" in `state_stats`); case of the variable name matters! ("state" is not equal to "State" as column names).
 
 ```{r}
-
 
 ```
 
@@ -306,7 +303,6 @@ Find the rows in `deaths` that don't have a match in `demo` Hint: join with `dea
 
 ```{r}
 
-
 ```
 
 ## Beware Missing Values
@@ -330,6 +326,8 @@ If we want this to not happen, we can set the `na_matches` argument to "never"
 left_join(x1, x2, by="id", 
           na_matches="never")
 ```
+
+That's probably a good idea. In any case, you'd want to make sure you fully understand your keys before doing any joins.
 
 Sometimes, R will warn you that there there might be a problem.
 
@@ -390,7 +388,7 @@ Hint: use the `demo` and `deaths` data frames.
 
 ```
 
-# Learning More
+# Resources to continue learning
 
 See the Relational Data chapter in the book R for Data Science: <https://r4ds.had.co.nz/relational-data.html>
 
@@ -398,4 +396,4 @@ See the Relational Data chapter in the book R for Data Science: <https://r4ds.ha
 
 You now can use different `{dplyr}` join commands, such as `inner_join`, `outer_join`, `left_join`, `right_join`, `anti_join`, to join together your data in a wide variety of ways.
 
-Next session: the `{tidyr}` functions for reshaping your data to follow the tidy format: `pivot_longer`, `pivot_wider`, `separate` and `separate_rows`
+Next: the `{tidyr}` functions for reshaping your data to follow the tidy format: `pivot_longer`, `pivot_wider`, `separate` and `separate_rows`.
