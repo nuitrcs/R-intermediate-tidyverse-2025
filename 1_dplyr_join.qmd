@@ -49,7 +49,7 @@ What's in the data sets:
 demo           # demographics by county
 cases          # covid case counts by county
 deaths         # covid death counts by county
-state_stats.   # covid case and death counts by state and demographics
+state_stats   # covid case and death counts by state and demographics
 ```
 
 County FIPS Codes are unique 5-digit codes that represent specific US counties. The first two digits represent the county's state and the last three digits represent the county. For example "17031" is the FIPS Code for Cook County, Illinois.
