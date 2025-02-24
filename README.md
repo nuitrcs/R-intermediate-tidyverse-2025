@@ -1,6 +1,6 @@
 # R Intermediate Tidyverse
 
-This workshop is being offered in-person in June 2024 by [Northwestern IT Research Computing and Data Services](https://www.it.northwestern.edu/departments/it-services-support/research/).
+This workshop is being offered in-person by [Northwestern IT Research Computing and Data Services](https://www.it.northwestern.edu/departments/it-services-support/research/).
 
 We will cover the following topics:
 
